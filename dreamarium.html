@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dreamarium — Votre vision board digital</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --teal: #005D66;
+    --teal-dark: #004A52;
+    --rose: #F7D6E0;
+    --rose-dark: #EAC4D5;
+    --blue-mist: #C9D6EA;
+    --ivory: #FAF6F6;
+    --text-teal: #005D66;
+    --text-muted: #5A8A90;
+  }
+  body { font-family: 'Georgia', serif; background: var(--ivory); color: var(--teal); overflow-x: hidden; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(0,93,102,0.95); backdrop-filter: blur(10px);
+    padding: 16px 40px; display: flex; justify-content: space-between; align-items: center;
+  }
+  .nav-logo { font-size: 1.4em; color: var(--rose); font-style: italic; letter-spacing: 1px; text-decoration: none; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: var(--blue-mist); text-decoration: none; font-size: 0.9em; letter-spacing: 1px; font-family: Arial, sans-serif; transition: color 0.3s; }
+  .nav-links a:hover { color: var(--rose); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 60%, #003840 100%);
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 100px 40px 60px; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; width: 500px; height: 500px; border-radius: 50%;
+    background: rgba(247,214,224,0.05); top: -100px; right: -100px;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 700px; }
+  .hero-icon {
+    width: 100px; height: 100px; border-radius: 24px; background: var(--teal-dark);
+    border: 3px solid var(--rose); display: flex; align-items: center; justify-content: center;
+    font-size: 3em; font-style: italic; color: var(--rose); margin: 0 auto 30px;
+    font-family: Georgia, serif; box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  }
+  .hero h1 { font-size: 3.5em; color: var(--rose); font-style: italic; margin-bottom: 16px; }
+  .hero-sub { font-size: 1.2em; color: var(--blue-mist); line-height: 1.7; margin-bottom: 40px; font-family: Arial, sans-serif; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--rose); color: var(--teal); padding: 16px 36px;
+    border-radius: 30px; text-decoration: none; font-family: Arial, sans-serif;
+    font-size: 1em; font-weight: bold; transition: all 0.3s; margin: 8px;
+  }
+  .btn-primary:hover { background: var(--rose-dark); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(247,214,224,0.3); }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: transparent; color: var(--rose); padding: 15px 35px;
+    border-radius: 30px; text-decoration: none; font-family: Arial, sans-serif;
+    font-size: 1em; border: 2px solid var(--rose); transition: all 0.3s; margin: 8px;
+  }
+  .btn-secondary:hover { background: rgba(247,214,224,0.1); transform: translateY(-2px); }
+
+  /* FEATURES */
+  .features { padding: 80px 40px; max-width: 1100px; margin: 0 auto; }
+  .section-tag { font-family: Arial, sans-serif; font-size: 0.75em; letter-spacing: 3px; color: var(--rose-dark); text-transform: uppercase; margin-bottom: 12px; }
+  .section-title { font-size: 2.5em; color: var(--teal); font-style: italic; margin-bottom: 16px; }
+  .section-sub { font-size: 1.05em; color: var(--text-muted); line-height: 1.7; font-family: Arial, sans-serif; margin-bottom: 50px; max-width: 600px; }
+  .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .feature-card {
+    background: white; border-radius: 20px; padding: 32px;
+    border: 1px solid var(--rose-dark); transition: all 0.3s;
+  }
+  .feature-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,93,102,0.1); }
+  .feature-icon { font-size: 2em; margin-bottom: 16px; }
+  .feature-card h3 { font-size: 1.1em; color: var(--teal); font-style: italic; margin-bottom: 10px; }
+  .feature-card p { color: var(--text-muted); font-family: Arial, sans-serif; font-size: 0.9em; line-height: 1.7; }
+
+  /* SCREENSHOTS */
+  .screenshots-bg { background: var(--teal); padding: 80px 0; }
+  .screenshots-inner { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+  .screenshots-bg .section-tag { color: var(--rose-dark); }
+  .screenshots-bg .section-title { color: var(--rose); }
+  .screenshots-bg .section-sub { color: var(--blue-mist); }
+  .screenshots-scroll { display: flex; gap: 24px; overflow-x: auto; padding-bottom: 20px; scrollbar-width: none; }
+  .screenshots-scroll::-webkit-scrollbar { display: none; }
+  .screenshot-item { flex-shrink: 0; }
+  .phone-frame {
+    width: 200px; background: #1a1a1a; border-radius: 30px;
+    padding: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .phone-screen { background: var(--ivory); border-radius: 20px; overflow: hidden; height: 360px; display: flex; align-items: center; justify-content: center; }
+  .phone-screen img { width: 100%; height: 100%; object-fit: cover; }
+  .phone-screen-placeholder {
+    background: linear-gradient(135deg, var(--rose) 0%, var(--blue-mist) 100%);
+    width: 100%; height: 100%; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 8px;
+  }
+  .phone-screen-placeholder span { font-size: 2em; }
+  .phone-screen-placeholder p { font-family: Arial, sans-serif; font-size: 0.75em; color: var(--teal); font-weight: bold; text-align: center; padding: 0 10px; }
+  .screenshot-label { text-align: center; margin-top: 14px; color: var(--blue-mist); font-family: Arial, sans-serif; font-size: 0.85em; }
+
+  /* DOWNLOAD */
+  .download { padding: 80px 40px; text-align: center; }
+  .download-box {
+    background: white; border-radius: 24px; padding: 60px 40px;
+    border: 1px solid var(--rose-dark); max-width: 700px; margin: 0 auto;
+  }
+  .download-box h2 { font-size: 2em; color: var(--teal); font-style: italic; margin-bottom: 16px; }
+  .download-box p { color: var(--text-muted); font-family: Arial, sans-serif; margin-bottom: 32px; line-height: 1.7; }
+  .store-badges { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .store-badge {
+    display: flex; align-items: center; gap: 12px;
+    background: var(--teal); color: white; padding: 14px 28px;
+    border-radius: 14px; text-decoration: none; transition: all 0.3s;
+  }
+  .store-badge:hover { background: var(--teal-dark); transform: translateY(-2px); }
+  .store-badge-icon { font-size: 1.8em; }
+  .store-badge-text { text-align: left; }
+  .store-badge-text small { display: block; font-family: Arial, sans-serif; font-size: 0.7em; opacity: 0.8; }
+  .store-badge-text strong { font-family: Arial, sans-serif; font-size: 1em; }
+  .soon-badge {
+    display: flex; align-items: center; gap: 12px;
+    background: #f0f0f0; color: #888; padding: 14px 28px;
+    border-radius: 14px; cursor: default;
+  }
+
+  /* INSTAGRAM */
+  .instagram-section { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); padding: 60px 40px; text-align: center; }
+  .instagram-section h2 { font-size: 2em; color: white; font-style: italic; margin-bottom: 12px; }
+  .instagram-section p { color: rgba(255,255,255,0.85); font-family: Arial, sans-serif; margin-bottom: 28px; }
+  .instagram-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: white; color: #833ab4; padding: 14px 32px;
+    border-radius: 30px; text-decoration: none; font-family: Arial, sans-serif;
+    font-weight: bold; font-size: 1em; transition: all 0.3s;
+  }
+  .instagram-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
+
+  /* FOOTER */
+  footer { background: var(--teal-dark); padding: 40px; text-align: center; }
+  .footer-logo { font-size: 1.8em; color: var(--rose); font-style: italic; margin-bottom: 16px; }
+  footer p { color: var(--blue-mist); font-family: Arial, sans-serif; font-size: 0.85em; line-height: 1.8; }
+  footer a { color: var(--rose-dark); text-decoration: none; }
+  footer a:hover { color: var(--rose); }
+
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 2.5em; }
+    .features-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    nav { padding: 16px 20px; }
+    .features { padding: 60px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Om'nistique</a>
+  <ul class="nav-links">
+    <li><a href="index.html#apps">Applications</a></li>
+    <li><a href="index.html#project">Le Projet</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-icon">D</div>
+    <h1>Dreamarium</h1>
+    <p class="hero-sub">Votre vision board digital pour manifester vos projets de vie. Créez, visualisez et accomplissez vos rêves — étape par étape.</p>
+    <div>
+      <a href="https://play.google.com/store/apps/details?id=com.omnistique.dreamarium" class="btn-primary">▶ Télécharger sur Android</a>
+      <a href="#features" class="btn-secondary">Découvrir les fonctionnalités</a>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <p class="section-tag">FONCTIONNALITÉS</p>
+  <h2 class="section-title">Tout pour réaliser vos rêves</h2>
+  <p class="section-sub">Dreamarium réunit tous les outils dont vous avez besoin pour transformer vos idées en réalité.</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🎯</div>
+      <h3>Vision board interactif</h3>
+      <p>Ajoutez des photos inspirantes à vos projets et visualisez votre progression avec des graphiques dynamiques.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <h3>Suivi de progression</h3>
+      <p>Des roues de progression colorées pour visualiser d'un coup d'œil l'avancement de chaque projet.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💰</div>
+      <h3>Gestion de budget</h3>
+      <p>Planifiez et suivez le budget de chaque projet avec des cagnottes et des indicateurs clairs.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">✅</div>
+      <h3>Étapes détaillées</h3>
+      <p>Décomposez chaque projet en étapes concrètes avec des coûts et des liens vers vos boutiques préférées.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🛍️</div>
+      <h3>Liens boutiques</h3>
+      <p>Accédez directement à Amazon, Etsy, Leboncoin et Fnac depuis chaque étape de votre projet.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎨</div>
+      <h3>Personnalisation</h3>
+      <p>5 thèmes de couleurs élégants et disponible en 7 langues pour une expérience vraiment personnalisée.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<div class="screenshots-bg">
+  <div class="screenshots-inner">
+    <p class="section-tag">APERÇU</p>
+    <h2 class="section-title">L'application en images</h2>
+    <p class="section-sub">Une interface élégante et intuitive pour gérer tous vos projets de vie.</p>
+    <div class="screenshots-scroll">
+      <div class="screenshot-item">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="phone-screen-placeholder">
+              <span>🏠</span>
+              <p>Accueil & Projets</p>
+            </div>
+          </div>
+        </div>
+        <p class="screenshot-label">Vos projets en cours</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="phone-screen-placeholder">
+              <span>📊</span>
+              <p>Détail & Progression</p>
+            </div>
+          </div>
+        </div>
+        <p class="screenshot-label">Suivi détaillé</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="phone-screen-placeholder">
+              <span>✅</span>
+              <p>Tâches & Rappels</p>
+            </div>
+          </div>
+        </div>
+        <p class="screenshot-label">Vos tâches</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="phone-screen-placeholder">
+              <span>💰</span>
+              <p>Budget & Cagnottes</p>
+            </div>
+          </div>
+        </div>
+        <p class="screenshot-label">Gestion budget</p>
+      </div>
+      <div class="screenshot-item">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="phone-screen-placeholder">
+              <span>🎨</span>
+              <p>Profil & Thèmes</p>
+            </div>
+          </div>
+        </div>
+        <p class="screenshot-label">Personnalisation</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DOWNLOAD -->
+<section class="download">
+  <div class="download-box">
+    <h2>Téléchargez Dreamarium</h2>
+    <p>Disponible gratuitement sur Android. Version iOS bientôt disponible !</p>
+    <div class="store-badges">
+      <a href="https://play.google.com/store/apps/details?id=com.omnistique.dreamarium" class="store-badge">
+        <div class="store-badge-icon">▶</div>
+        <div class="store-badge-text">
+          <small>Disponible sur</small>
+          <strong>Google Play</strong>
+        </div>
+      </a>
+      <div class="soon-badge">
+        <div class="store-badge-icon">🍎</div>
+        <div class="store-badge-text">
+          <small>Bientôt sur</small>
+          <strong>App Store</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<div class="instagram-section">
+  <h2>Suivez-nous sur Instagram</h2>
+  <p>Rejoignez la communauté Dreamarium pour des conseils, des inspirations et les dernières nouveautés.</p>
+  <a href="https://www.instagram.com/omnistique13" target="_blank" class="instagram-btn">
+    📸 @omnistique13
+  </a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Om'nistique</div>
+  <p>
+    <a href="index.html">Accueil</a> &nbsp;·&nbsp;
+    <a href="contact.html">Contact</a> &nbsp;·&nbsp;
+    <a href="confidentialite">Politique de confidentialité</a> &nbsp;·&nbsp;
+    <a href="https://www.instagram.com/omnistique13" target="_blank">Instagram</a>
+  </p>
+  <p style="margin-top: 12px;">© 2026 Om'nistique. Tous droits réservés.</p>
+</footer>
+
+</body>
+</html>

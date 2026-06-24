@@ -3,64 +3,254 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Politique de confidentialité — Dreamarium</title>
+<title>Politique de confidentialité — Om'nistique & Dreamarium</title>
 <style>
-  body { font-family: Georgia, serif; max-width: 800px; margin: 0 auto; padding: 40px 20px; background: #005D66; color: #FAF6F6; }
-  h1 { color: #F7D6E0; font-size: 2em; border-bottom: 2px solid #F7D6E0; padding-bottom: 10px; }
-  h2 { color: #EAC4D5; font-size: 1.3em; margin-top: 30px; }
-  p { line-height: 1.8; color: #FAF6F6; }
-  .lang { text-align: right; margin-bottom: 20px; }
-  .lang a { color: #EAC4D5; text-decoration: none; }
-  footer { margin-top: 60px; text-align: center; color: #C9D6EA; font-size: 0.9em; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --teal: #005D66; --teal-dark: #004A52; --rose: #F7D6E0;
+    --rose-dark: #EAC4D5; --blue-mist: #C9D6EA; --ivory: #FAF6F6;
+    --text-muted: #5A8A90;
+  }
+  body { font-family: 'Georgia', serif; background: var(--teal); color: var(--ivory); }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(0,93,102,0.95); backdrop-filter: blur(10px);
+    padding: 16px 40px; display: flex; justify-content: space-between; align-items: center;
+  }
+  .nav-logo { font-size: 1.4em; color: var(--rose); font-style: italic; text-decoration: none; }
+
+  .container { max-width: 860px; margin: 0 auto; padding: 120px 40px 80px; }
+
+  .lang-switch { text-align: right; margin-bottom: 30px; }
+  .lang-switch a { color: var(--rose-dark); font-family: Arial, sans-serif; font-size: 0.9em; text-decoration: none; border-bottom: 1px solid var(--rose-dark); }
+
+  h1 { font-size: 2.5em; color: var(--rose); font-style: italic; margin-bottom: 8px; }
+  .updated { color: var(--blue-mist); font-family: Arial, sans-serif; font-size: 0.9em; margin-bottom: 40px; }
+
+  .rgpd-badge {
+    background: rgba(247,214,224,0.1); border: 1px solid var(--rose-dark);
+    border-radius: 12px; padding: 20px 24px; margin-bottom: 40px;
+    display: flex; align-items: flex-start; gap: 16px;
+  }
+  .rgpd-badge-icon { font-size: 1.8em; flex-shrink: 0; }
+  .rgpd-badge p { color: var(--blue-mist); font-family: Arial, sans-serif; font-size: 0.9em; line-height: 1.7; }
+  .rgpd-badge strong { color: var(--rose); }
+
+  h2 { font-size: 1.4em; color: var(--rose); margin: 40px 0 14px; border-bottom: 1px solid rgba(247,214,224,0.2); padding-bottom: 8px; }
+  h3 { font-size: 1.1em; color: var(--rose-dark); margin: 24px 0 10px; }
+  p { line-height: 1.8; color: var(--ivory); font-family: Arial, sans-serif; font-size: 0.95em; margin-bottom: 14px; }
+  ul { padding-left: 20px; margin-bottom: 14px; }
+  ul li { color: var(--ivory); font-family: Arial, sans-serif; font-size: 0.95em; line-height: 1.8; margin-bottom: 6px; }
+
+  .rights-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 20px 0; }
+  .right-card { background: rgba(255,255,255,0.07); border-radius: 12px; padding: 20px; border: 1px solid rgba(247,214,224,0.15); }
+  .right-card h4 { color: var(--rose); font-size: 0.95em; margin-bottom: 8px; font-family: Arial, sans-serif; }
+  .right-card p { font-size: 0.85em; color: var(--blue-mist); margin: 0; }
+
+  .table-wrapper { overflow-x: auto; margin: 20px 0; }
+  table { width: 100%; border-collapse: collapse; font-family: Arial, sans-serif; font-size: 0.85em; }
+  th { background: rgba(247,214,224,0.15); color: var(--rose); padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(247,214,224,0.2); }
+  td { padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.08); color: var(--ivory); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+
+  .contact-box { background: rgba(247,214,224,0.1); border: 1px solid var(--rose-dark); border-radius: 12px; padding: 24px; margin: 20px 0; }
+  .contact-box p { margin: 0; }
+  .contact-box a { color: var(--rose); }
+
+  hr { border: none; border-top: 1px solid rgba(247,214,224,0.2); margin: 60px 0; }
+
+  .english h1, .english h2, .english h3, .english h4 { color: var(--rose); }
+
+  footer { background: var(--teal-dark); padding: 30px 40px; text-align: center; }
+  footer p { color: var(--blue-mist); font-family: Arial, sans-serif; font-size: 0.85em; }
+  footer a { color: var(--rose-dark); text-decoration: none; }
+  footer a:hover { color: var(--rose); }
+
+  @media (max-width: 768px) {
+    .rights-grid { grid-template-columns: 1fr; }
+    .container { padding: 100px 20px 60px; }
+    nav { padding: 16px 20px; }
+  }
 </style>
 </head>
 <body>
-<div class="lang"><a href="#english">English below ↓</a></div>
 
-<h1>Politique de confidentialité — Dreamarium</h1>
-<p><em>Dernière mise à jour : mai 2026</em></p>
+<nav>
+  <a href="index.html" class="nav-logo">Om'nistique</a>
+</nav>
 
-<h2>1. Collecte des données</h2>
-<p>Dreamarium ne collecte aucune donnée personnelle sur ses serveurs. Toutes vos données (projets, tâches, budgets, photos) sont stockées uniquement sur votre appareil.</p>
+<div class="container">
 
-<h2>2. Photos et médias</h2>
-<p>Les photos que vous ajoutez à vos projets sont stockées localement sur votre appareil. Elles ne sont jamais transmises à des serveurs externes.</p>
+  <div class="lang-switch"><a href="#english">English below ↓</a></div>
 
-<h2>3. Contact</h2>
-<p>Si vous nous contactez via omnistique@gmail.com, nous utilisons votre adresse email uniquement pour répondre à votre demande. Nous ne la partageons avec aucun tiers.</p>
+  <!-- FR -->
+  <h1>Politique de confidentialité</h1>
+  <p class="updated">Dernière mise à jour : juin 2026 · Version 2.0</p>
 
-<h2>4. Publicités</h2>
-<p>Dreamarium ne contient aucune publicité et ne partage aucune donnée avec des régies publicitaires.</p>
+  <div class="rgpd-badge">
+    <div class="rgpd-badge-icon">🇪🇺</div>
+    <p>Cette politique est conforme au <strong>Règlement Général sur la Protection des Données (RGPD)</strong> — Règlement (UE) 2016/679 du Parlement européen et du Conseil du 27 avril 2016. Elle s'applique à l'application mobile <strong>Dreamarium</strong> et au site web <strong>om-nistique.github.io</strong>.</p>
+  </div>
 
-<h2>5. Modifications</h2>
-<p>Nous pouvons mettre à jour cette politique à tout moment. Les modifications seront publiées sur cette page.</p>
+  <h2>1. Responsable du traitement</h2>
+  <p>Le responsable du traitement des données personnelles est :</p>
+  <div class="contact-box">
+    <p><strong>Om'nistique</strong><br>
+    Email : <a href="mailto:omnistique@gmail.com">omnistique@gmail.com</a><br>
+    Instagram : <a href="https://www.instagram.com/omnistique13" target="_blank">@omnistique13</a></p>
+  </div>
 
-<h2>6. Contact</h2>
-<p>Pour toute question : omnistique@gmail.com</p>
+  <h2>2. Données collectées et finalités</h2>
 
-<hr style="border-color: #EAC4D5; margin: 60px 0;">
+  <h3>2.1 Application Dreamarium</h3>
+  <p>L'application Dreamarium <strong>ne collecte aucune donnée personnelle sur nos serveurs</strong>. Toutes les données que vous créez (projets, tâches, budgets, photos) sont stockées <strong>uniquement sur votre appareil</strong> et ne nous sont jamais transmises.</p>
 
-<h1 id="english">Privacy Policy — Dreamarium</h1>
-<p><em>Last updated: May 2026</em></p>
+  <h3>2.2 Formulaire de contact (site web)</h3>
+  <p>Lorsque vous utilisez notre formulaire de contact, nous collectons :</p>
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>Donnée</th><th>Finalité</th><th>Base légale</th><th>Durée de conservation</th></tr></thead>
+      <tbody>
+        <tr><td>Nom et prénom</td><td>Personnaliser la réponse</td><td>Consentement (Art. 6.1.a)</td><td>12 mois</td></tr>
+        <tr><td>Adresse email</td><td>Vous répondre</td><td>Consentement (Art. 6.1.a)</td><td>12 mois</td></tr>
+        <tr><td>Contenu du message</td><td>Traiter votre demande</td><td>Consentement (Art. 6.1.a)</td><td>12 mois</td></tr>
+        <tr><td>Sujet sélectionné</td><td>Orienter la demande</td><td>Consentement (Art. 6.1.a)</td><td>12 mois</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Ces données sont traitées <strong>uniquement pour répondre à votre demande</strong> et ne sont jamais partagées avec des tiers, revendues, ni utilisées à des fins commerciales.</p>
 
-<h2>1. Data collection</h2>
-<p>Dreamarium does not collect any personal data on its servers. All your data (projects, tasks, budgets, photos) is stored only on your device.</p>
+  <h3>2.3 Emails de support (depuis l'application)</h3>
+  <p>Lorsque vous utilisez les boutons "Suggérer une amélioration" ou "Signaler un bug" dans l'application, votre client email s'ouvre avec votre adresse pré-remplie. Nous traitons ces emails de la même façon que les messages du formulaire de contact.</p>
 
-<h2>2. Photos and media</h2>
-<p>Photos you add to your projects are stored locally on your device. They are never transmitted to external servers.</p>
+  <h2>3. Partage des données</h2>
+  <p>Nous ne vendons, ne louons et ne partageons jamais vos données personnelles avec des tiers, à l'exception des cas suivants :</p>
+  <ul>
+    <li>Obligation légale (réquisition judiciaire, obligation réglementaire)</li>
+    <li>Protection de nos droits légaux</li>
+  </ul>
+  <p>Nous n'utilisons <strong>aucun outil de tracking, aucune publicité et aucun cookie de profilage</strong> sur notre site web ou dans notre application.</p>
 
-<h2>3. Contact</h2>
-<p>If you contact us at omnistique@gmail.com, we use your email address only to respond to your request. We do not share it with any third party.</p>
+  <h2>4. Hébergement des données</h2>
+  <p>Le site web <strong>om-nistique.github.io</strong> est hébergé par <strong>GitHub Pages</strong> (Microsoft Corporation, États-Unis). GitHub est certifié conforme au cadre <strong>EU-U.S. Data Privacy Framework</strong> garantissant un niveau de protection adéquat pour les transferts de données vers les États-Unis.</p>
+  <p>L'application <strong>Dreamarium</strong> est distribuée via <strong>Google Play Store</strong> (Google LLC). Les données de l'application restent sur votre appareil et ne transitent pas par nos serveurs.</p>
 
-<h2>4. Advertising</h2>
-<p>Dreamarium contains no advertising and shares no data with advertising networks.</p>
+  <h2>5. Vos droits RGPD</h2>
+  <p>Conformément au RGPD, vous disposez des droits suivants concernant vos données personnelles :</p>
+  <div class="rights-grid">
+    <div class="right-card">
+      <h4>📋 Droit d'accès</h4>
+      <p>Obtenir une copie de vos données que nous détenons.</p>
+    </div>
+    <div class="right-card">
+      <h4>✏️ Droit de rectification</h4>
+      <p>Corriger des données inexactes ou incomplètes.</p>
+    </div>
+    <div class="right-card">
+      <h4>🗑️ Droit à l'effacement</h4>
+      <p>Demander la suppression de vos données ("droit à l'oubli").</p>
+    </div>
+    <div class="right-card">
+      <h4>⏸️ Droit à la limitation</h4>
+      <p>Suspendre le traitement de vos données dans certains cas.</p>
+    </div>
+    <div class="right-card">
+      <h4>📦 Droit à la portabilité</h4>
+      <p>Recevoir vos données dans un format structuré et lisible.</p>
+    </div>
+    <div class="right-card">
+      <h4>🚫 Droit d'opposition</h4>
+      <p>Vous opposer au traitement de vos données à tout moment.</p>
+    </div>
+  </div>
+  <p>Pour exercer ces droits, contactez-nous à : <a href="mailto:omnistique@gmail.com" style="color:var(--rose)">omnistique@gmail.com</a></p>
+  <p>Nous nous engageons à répondre à toute demande dans un délai de <strong>30 jours</strong> conformément à l'article 12 du RGPD.</p>
+  <p>Vous avez également le droit d'introduire une réclamation auprès de la <strong>CNIL</strong> (Commission Nationale de l'Informatique et des Libertés) : <a href="https://www.cnil.fr" target="_blank" style="color:var(--rose)">www.cnil.fr</a></p>
 
-<h2>5. Changes</h2>
-<p>We may update this policy at any time. Changes will be posted on this page.</p>
+  <h2>6. Sécurité des données</h2>
+  <p>Nous mettons en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos données contre tout accès non autorisé, perte ou divulgation, notamment :</p>
+  <ul>
+    <li>Communication chiffrée via HTTPS sur notre site web</li>
+    <li>Accès limité aux données aux seules personnes habilitées</li>
+    <li>Aucun stockage de données sensibles sur des serveurs distants</li>
+  </ul>
 
-<h2>6. Contact</h2>
-<p>For any questions: omnistique@gmail.com</p>
+  <h2>7. Mineurs</h2>
+  <p>Nos services ne sont pas destinés aux personnes de moins de 13 ans. Nous ne collectons pas sciemment de données personnelles concernant des mineurs. Si vous pensez qu'un mineur nous a fourni des données sans consentement parental, contactez-nous immédiatement.</p>
 
-<footer>© 2026 Om'nistique — Dreamarium</footer>
+  <h2>8. Modifications de la politique</h2>
+  <p>Nous pouvons mettre à jour cette politique à tout moment. En cas de modification substantielle, nous l'indiquerons clairement avec une nouvelle date de version. Nous vous encourageons à consulter cette page régulièrement.</p>
+
+  <h2>9. Contact</h2>
+  <div class="contact-box">
+    <p>Pour toute question relative à cette politique ou pour exercer vos droits :<br><br>
+    📧 <a href="mailto:omnistique@gmail.com">omnistique@gmail.com</a><br>
+    📸 <a href="https://www.instagram.com/omnistique13" target="_blank">@omnistique13</a></p>
+  </div>
+
+  <hr>
+
+  <!-- ENGLISH -->
+  <div class="english" id="english">
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: June 2026 · Version 2.0</p>
+
+    <div class="rgpd-badge">
+      <div class="rgpd-badge-icon">🇪🇺</div>
+      <p>This policy complies with the <strong>General Data Protection Regulation (GDPR)</strong> — Regulation (EU) 2016/679. It applies to the <strong>Dreamarium</strong> mobile app and the <strong>om-nistique.github.io</strong> website.</p>
+    </div>
+
+    <h2>1. Data Controller</h2>
+    <div class="contact-box">
+      <p><strong>Om'nistique</strong><br>
+      Email: <a href="mailto:omnistique@gmail.com">omnistique@gmail.com</a></p>
+    </div>
+
+    <h2>2. Data Collected and Purposes</h2>
+    <h3>2.1 Dreamarium App</h3>
+    <p>The Dreamarium app <strong>collects no personal data on our servers</strong>. All data you create (projects, tasks, budgets, photos) is stored <strong>only on your device</strong>.</p>
+
+    <h3>2.2 Contact Form</h3>
+    <div class="table-wrapper">
+      <table>
+        <thead><tr><th>Data</th><th>Purpose</th><th>Legal Basis</th><th>Retention</th></tr></thead>
+        <tbody>
+          <tr><td>Name</td><td>Personalize reply</td><td>Consent (Art. 6.1.a)</td><td>12 months</td></tr>
+          <tr><td>Email address</td><td>Reply to you</td><td>Consent (Art. 6.1.a)</td><td>12 months</td></tr>
+          <tr><td>Message content</td><td>Handle your request</td><td>Consent (Art. 6.1.a)</td><td>12 months</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>3. Your GDPR Rights</h2>
+    <div class="rights-grid">
+      <div class="right-card"><h4>📋 Right of Access</h4><p>Obtain a copy of your data.</p></div>
+      <div class="right-card"><h4>✏️ Right of Rectification</h4><p>Correct inaccurate data.</p></div>
+      <div class="right-card"><h4>🗑️ Right to Erasure</h4><p>Request deletion of your data.</p></div>
+      <div class="right-card"><h4>📦 Right to Portability</h4><p>Receive your data in a structured format.</p></div>
+    </div>
+    <p>To exercise your rights: <a href="mailto:omnistique@gmail.com" style="color:var(--rose)">omnistique@gmail.com</a></p>
+    <p>You may also lodge a complaint with your national data protection authority.</p>
+
+    <h2>4. Contact</h2>
+    <div class="contact-box">
+      <p>📧 <a href="mailto:omnistique@gmail.com">omnistique@gmail.com</a><br>
+      📸 <a href="https://www.instagram.com/omnistique13" target="_blank">@omnistique13</a></p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>
+    <a href="index.html">Accueil</a> &nbsp;·&nbsp;
+    <a href="dreamarium.html">Dreamarium</a> &nbsp;·&nbsp;
+    <a href="contact.html">Contact</a> &nbsp;·&nbsp;
+    <a href="https://www.instagram.com/omnistique13" target="_blank">Instagram</a>
+  </p>
+  <p style="margin-top: 8px;">© 2026 Om'nistique — RGPD conforme</p>
+</footer>
+
 </body>
 </html>

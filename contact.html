@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Om'nistique</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --teal: #005D66; --teal-dark: #004A52; --rose: #F7D6E0;
+    --rose-dark: #EAC4D5; --blue-mist: #C9D6EA; --ivory: #FAF6F6;
+    --text-muted: #5A8A90;
+  }
+  body { font-family: 'Georgia', serif; background: var(--ivory); color: var(--teal); overflow-x: hidden; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(0,93,102,0.95); backdrop-filter: blur(10px);
+    padding: 16px 40px; display: flex; justify-content: space-between; align-items: center;
+  }
+  .nav-logo { font-size: 1.4em; color: var(--rose); font-style: italic; letter-spacing: 1px; text-decoration: none; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: var(--blue-mist); text-decoration: none; font-size: 0.9em; letter-spacing: 1px; font-family: Arial, sans-serif; transition: color 0.3s; }
+  .nav-links a:hover { color: var(--rose); }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--teal) 0%, var(--teal-dark) 100%);
+    padding: 140px 40px 80px; text-align: center;
+  }
+  .hero h1 { font-size: 3em; color: var(--rose); font-style: italic; margin-bottom: 16px; }
+  .hero p { color: var(--blue-mist); font-family: Arial, sans-serif; font-size: 1.1em; line-height: 1.7; }
+
+  /* CONTACT GRID */
+  .contact-section { padding: 80px 40px; max-width: 1100px; margin: 0 auto; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; }
+
+  /* FORM */
+  .contact-form { background: white; border-radius: 24px; padding: 40px; border: 1px solid var(--rose-dark); }
+  .contact-form h2 { font-size: 1.6em; color: var(--teal); font-style: italic; margin-bottom: 8px; }
+  .contact-form p { color: var(--text-muted); font-family: Arial, sans-serif; font-size: 0.9em; margin-bottom: 28px; line-height: 1.6; }
+  .form-group { margin-bottom: 20px; }
+  .form-group label { display: block; font-family: Arial, sans-serif; font-size: 0.8em; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; padding: 12px 16px; border: 1px solid var(--rose-dark);
+    border-radius: 10px; font-family: Georgia, serif; font-size: 0.95em;
+    color: var(--teal); background: var(--ivory); outline: none; transition: border 0.3s;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--teal); }
+  .form-group textarea { height: 140px; resize: vertical; }
+  .submit-btn {
+    width: 100%; background: var(--teal); color: var(--rose); padding: 14px;
+    border: none; border-radius: 30px; font-family: Arial, sans-serif;
+    font-size: 1em; font-weight: bold; cursor: pointer; transition: all 0.3s; letter-spacing: 1px;
+  }
+  .submit-btn:hover { background: var(--teal-dark); transform: translateY(-2px); }
+
+  /* INFOS */
+  .contact-info { display: flex; flex-direction: column; gap: 20px; }
+  .info-card {
+    background: white; border-radius: 16px; padding: 28px;
+    border: 1px solid var(--rose-dark); transition: all 0.3s;
+  }
+  .info-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,93,102,0.1); }
+  .info-card-icon { font-size: 1.8em; margin-bottom: 12px; }
+  .info-card h3 { font-size: 1.1em; color: var(--teal); font-style: italic; margin-bottom: 6px; }
+  .info-card p { color: var(--text-muted); font-family: Arial, sans-serif; font-size: 0.9em; line-height: 1.6; }
+  .info-card a { color: var(--teal); text-decoration: none; font-weight: bold; }
+  .info-card a:hover { color: var(--rose-dark); }
+
+  /* SOCIAL */
+  .social-section { background: var(--teal); padding: 60px 40px; text-align: center; }
+  .social-section h2 { font-size: 2em; color: var(--rose); font-style: italic; margin-bottom: 12px; }
+  .social-section p { color: var(--blue-mist); font-family: Arial, sans-serif; margin-bottom: 32px; }
+  .social-links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .social-link {
+    display: flex; align-items: center; gap: 10px;
+    padding: 14px 28px; border-radius: 30px; text-decoration: none;
+    font-family: Arial, sans-serif; font-size: 0.95em; font-weight: bold;
+    transition: all 0.3s;
+  }
+  .social-instagram { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); color: white; }
+  .social-email { background: var(--rose); color: var(--teal); }
+  .social-link:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+
+  /* FAQ */
+  .faq-section { padding: 80px 40px; max-width: 800px; margin: 0 auto; }
+  .faq-section h2 { font-size: 2em; color: var(--teal); font-style: italic; margin-bottom: 40px; text-align: center; }
+  .faq-item { border-bottom: 1px solid var(--rose-dark); padding: 24px 0; }
+  .faq-item h3 { font-size: 1.05em; color: var(--teal); margin-bottom: 10px; font-family: Arial, sans-serif; font-weight: bold; }
+  .faq-item p { color: var(--text-muted); font-family: Arial, sans-serif; font-size: 0.95em; line-height: 1.7; }
+
+  /* FOOTER */
+  footer { background: var(--teal-dark); padding: 40px; text-align: center; }
+  .footer-logo { font-size: 1.8em; color: var(--rose); font-style: italic; margin-bottom: 16px; }
+  footer p { color: var(--blue-mist); font-family: Arial, sans-serif; font-size: 0.85em; line-height: 1.8; }
+  footer a { color: var(--rose-dark); text-decoration: none; }
+  footer a:hover { color: var(--rose); }
+
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 2em; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    nav { padding: 16px 20px; }
+    .contact-section { padding: 60px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Om'nistique</a>
+  <ul class="nav-links">
+    <li><a href="index.html#apps">Applications</a></li>
+    <li><a href="dreamarium.html">Dreamarium</a></li>
+    <li><a href="index.html#project">Le Projet</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Contactez-nous</h1>
+  <p>Une question, une suggestion ou simplement envie d'échanger ?<br>Nous sommes là pour vous répondre.</p>
+</div>
+
+<!-- CONTACT GRID -->
+<section class="contact-section">
+  <div class="contact-grid">
+
+    <!-- FORM -->
+    <div class="contact-form">
+      <h2>Envoyez-nous un message</h2>
+      <p>Nous vous répondrons dans les meilleurs délais.</p>
+      <div class="form-group">
+        <label>Votre nom</label>
+        <input type="text" placeholder="Ex: Marie Martin">
+      </div>
+      <div class="form-group">
+        <label>Votre email</label>
+        <input type="email" placeholder="votre@email.com">
+      </div>
+      <div class="form-group">
+        <label>Sujet</label>
+        <select>
+          <option value="">Choisissez un sujet</option>
+          <option value="dreamarium">Question sur Dreamarium</option>
+          <option value="suggestion">Suggestion d'amélioration</option>
+          <option value="bug">Signaler un bug</option>
+          <option value="partenariat">Partenariat</option>
+          <option value="omnistique">Projet Ôm'nistique</option>
+          <option value="autre">Autre</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Votre message</label>
+        <textarea placeholder="Décrivez votre message ici..."></textarea>
+      </div>
+      <a href="mailto:omnistique@gmail.com" class="submit-btn" style="display:block;text-align:center;text-decoration:none;padding:14px;">
+        Envoyer le message →
+      </a>
+    </div>
+
+    <!-- INFOS -->
+    <div class="contact-info">
+      <div class="info-card">
+        <div class="info-card-icon">📧</div>
+        <h3>Email</h3>
+        <p>Pour toute question ou demande :<br><a href="mailto:omnistique@gmail.com">omnistique@gmail.com</a></p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">📱</div>
+        <h3>Support Dreamarium</h3>
+        <p>Vous pouvez aussi nous contacter directement depuis l'application via la section Support dans l'onglet Profil.</p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">📸</div>
+        <h3>Instagram</h3>
+        <p>Suivez nos actualités et partagez vos projets :<br><a href="https://www.instagram.com/omnistique13" target="_blank">@omnistique13</a></p>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">⏱️</div>
+        <h3>Délai de réponse</h3>
+        <p>Nous répondons généralement sous 24 à 48 heures, du lundi au vendredi.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SOCIAL -->
+<div class="social-section">
+  <h2>Rejoignez la communauté</h2>
+  <p>Suivez-nous pour ne rien manquer des nouveautés Dreamarium et du projet Ôm'nistique.</p>
+  <div class="social-links">
+    <a href="https://www.instagram.com/omnistique13" target="_blank" class="social-link social-instagram">
+      📸 @omnistique13
+    </a>
+    <a href="mailto:omnistique@gmail.com" class="social-link social-email">
+      ✉️ omnistique@gmail.com
+    </a>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <h2>Questions fréquentes</h2>
+  <div class="faq-item">
+    <h3>Dreamarium est-il gratuit ?</h3>
+    <p>Oui, Dreamarium est disponible gratuitement sur Google Play. Une version premium avec des fonctionnalités avancées est prévue.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Mes données sont-elles en sécurité ?</h3>
+    <p>Toutes vos données restent sur votre appareil. Nous ne collectons aucune information personnelle sur nos serveurs.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Dreamarium sera-t-il disponible sur iPhone ?</h3>
+    <p>Oui ! La version iOS est en cours de préparation et sera disponible sur l'App Store prochainement.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Comment signaler un bug ?</h3>
+    <p>Vous pouvez nous écrire à omnistique@gmail.com ou utiliser la section Support dans l'onglet Profil de l'application.</p>
+  </div>
+  <div class="faq-item">
+    <h3>C'est quoi le projet Ôm'nistique ?</h3>
+    <p>Ôm'nistique est un projet de maison de santé holistique qui réunira médecins, thérapeutes, salon de beauté, salle de sport, café-librairie et garderie sous un même toit. En savoir plus sur <a href="index.html#project">notre page d'accueil</a>.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Om'nistique</div>
+  <p>
+    <a href="index.html">Accueil</a> &nbsp;·&nbsp;
+    <a href="dreamarium.html">Dreamarium</a> &nbsp;·&nbsp;
+    <a href="confidentialite">Politique de confidentialité</a> &nbsp;·&nbsp;
+    <a href="https://www.instagram.com/omnistique13" target="_blank">Instagram</a>
+  </p>
+  <p style="margin-top: 12px;">© 2026 Om'nistique. Tous droits réservés.</p>
+</footer>
+
+</body>
+</html>
